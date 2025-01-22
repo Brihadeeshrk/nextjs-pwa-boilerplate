@@ -1,26 +1,30 @@
-I created this boilerplate for a Progressive Web Application that uses Next.js framework because many of the tutorials I found online left out important information about options in the `_document.tsx`, `mainfest.json`, and the `next.config.js` files. [This youtube tutorial](https://www.youtube.com/watch?v=ARNN_zmrwcw) had the most up-to-date information at the time, and the comments below were my best resources for creating a PWA with [`next-pwa`](https://www.npmjs.com/package/next-pwa) library and nextjs. Hope this is helpful!
+# Next.js PWA Template
 
-## To Set Up Your Own Progressive Web App with Next.js
+This is a [Next.js](https://nextjs.org) Progressive Web Application (PWA) project that follows the official [Next.js PWA documentation](https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps). It uses the latest Next.js version with TypeScript, Tailwind CSS, and Turbopack.
 
-Fork this repo, clone to your machine, and when in the root folder, run `npm install`.
+## Prerequisites
 
-If you want to immediately compile and view the boilerplate app on your machine, run:
-- `npx next build`
-followed by
-- `npx next start`
-- navigate to `localhost:3000` in your chrome browser (or any browser run with chromium), and view the app. 
+Before getting started, you'll need to:
 
-To import as a desktop app, click the icon seen here: 
+1. Install web-push and its TypeScript types globally:
 
-<img width="510" alt="image" src="https://user-images.githubusercontent.com/99047250/213308384-370d7664-2f28-48de-a64a-dd896c8ad528.png">
+```bash
+npm install -g web-push
+npm install --save-dev @types/web-push
+```
 
-To customize, edit the provided `manifest.json` file in the `public` folder, and run through the workflow above. Be sure to have the `display` option set to "standalone" or "fullscreen". 
+2. Generate VAPID keys:
 
-Please feel free to leave feedback, comments, or links to issues so that this boilerplate can be kept up-to-date.
+```bash
+web-push generate-vapid-keys
+```
 
+3. Create a `.env` file in the root directory and add your VAPID keys:
 
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+```env
+NEXT_PUBLIC_VAPID_PUBLIC_KEY=your_public_key_here
+VAPID_PRIVATE_KEY=your_private_key_here
+```
 
 ## Getting Started
 
@@ -32,29 +36,28 @@ npm run dev
 yarn dev
 # or
 pnpm dev
+# or
+bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about Next.js and PWAs, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js PWA Documentation](https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps) - learn about PWA features in Next.js
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
